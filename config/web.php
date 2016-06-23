@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'modules' => [
+        
         'admin' => [
             'class' => 'mdm\admin\Module',
 
@@ -21,7 +22,7 @@ $config = [
                 'assignment' => [
                     'label' => 'Grand Access' 
                 ],
-                'route' => null, // deshabilitar ítem
+                'route' => 'Grand Access', // deshabilitar ítem
             ],
         
     ],
