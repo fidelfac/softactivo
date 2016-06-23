@@ -9,7 +9,13 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+
+
+
+
+
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -23,6 +29,8 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+
+
 
 <div class="wrap">
     <?php
@@ -39,7 +47,9 @@ AppAsset::register($this);
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Acerca de', 'url' => ['/site/about']],
             ['label' => 'Contacto', 'url' => ['/site/contact']],
-            ['label' => 'Registrar', 'url' => ['/site/signup']],
+
+            ['label' => 'Menu', 'url' => ['/menu/index']],
+            
             Yii::$app->user->isGuest ? (
                 ['label' => 'Sesion', 'url' => ['/site/login']]
             ) : (
@@ -54,6 +64,7 @@ AppAsset::register($this);
             )
         ],
     ]);
+
     NavBar::end();
     ?>
 

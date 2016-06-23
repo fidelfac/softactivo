@@ -4,6 +4,8 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'modules' => [
+
+
         
         'admin' => [
             'class' => 'mdm\admin\Module',
@@ -20,9 +22,9 @@ $config = [
             ],
             'menus' => [
                 'assignment' => [
-                    'label' => 'Grand Access' 
+                    'label' => 'Grand Access', 
                 ],
-                'route' => 'Grand Access', // deshabilitar ítem
+                'route' => 'Grand Access',  // deshabilitar ítem
             ],
         
     ],
@@ -90,8 +92,10 @@ $config = [
         'class' => 'mdm\admin\classes\AccessControl',
         'allowActions' => [
         // agregar acciones para permitir acceso a todos
-            'site/*', 
-            // 'admin/*', // Eliminar cuando ya se haya configurado un usuario administrador
+            'site/*',
+            'gii/*',
+            'menu*', 
+            'admin/*', // Eliminar cuando ya se haya configurado un usuario administrador
         ]
     ],
 
@@ -111,6 +115,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        // 'allowedIPs' => ['*'],
     ];
 }
 
