@@ -3,14 +3,47 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+
+            'layout' => 'left-menu', //otros valores 'right-menu', 'top-menu' y 'null'
+            
+        ],
+        'controllerMap' => [
+                 'assignment' => [
+                    'class' => 'mdm\admin\controllers\AssignmentController',
+                    'userClassName' => 'app\models\User',
+                    'idField' => 'id',
+                ]
+            ],
+            'menus' => [
+                'assignment' => [
+                    'label' => 'Grand Access' 
+                ],
+                'route' => null, // deshabilitar ítem
+            ],
+        
+    ],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+
+
     'components' => [
+
+
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'mVNWpnAwzhnrXe5-czXz_jFsYFMmQJPD',
+
+
         ],
+
+
+        
+
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -46,8 +79,25 @@ $config = [
             ],
         ],
         */
+
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // o 'yii\rbac\PhpManager'
+        ]
     ],
+
+    'as access' => [
+        'class' => 'mdm\admin\classes\AccessControl',
+        'allowActions' => [
+        // agregar acciones para permitir acceso a todos
+            'site/*', 
+            // 'admin/*', // Eliminar cuando ya se haya configurado un usuario administrador
+        ]
+    ],
+
     'params' => $params,
+
+    
+
 ];
 
 if (YII_ENV_DEV) {
